@@ -1,0 +1,150 @@
+
+<view class="sOrder" wx:for="{{orderToSend}}" wx:key="*this">
+                  <view class="info" data-item="{{item}}" bindtap="checkOrder">
+                      <view class="time">
+                        {{item.usetime}}
+                      </view>
+                      <view class="location">
+                          <view wx:for="{{item.origin}}" wx:key="*this" class="location" wx:for-item="itemOrigin">
+                              <view wx:if="{{index==0}}">从</view>
+                              <view>{{itemOrigin}}</view>
+                              <view wx:if="{{index<(item.origin.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                              <view wx:if="{{index==item.origin.length-1}}">出发,到</view>
+                          </view>
+                          <view wx:for="{{item.destination}}" wx:key="*this" class="location" wx:for-item="itemDest">
+                              <view>{{itemDest}}</view>
+                              <view wx:if="{{index<(item.destination.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                          </view>
+                      </view>  
+                      <view class="passenger">
+                        乘客：{{item.passenger}}
+                      </view>
+                      <view class="passengerTel">
+                        乘客电话：{{item.mobilephone}}
+                      </view>
+                      <view class="reason">
+                        乘车原因：{{item.reason}}
+                      </view>
+                  </view> <!-- info end -->
+          </view>   <!-- sOrder end -->
+
+<view class="section applyForTime">
+  <view class="name">
+  实际用车起始时间
+  </view>
+  <view class="content Picker line">
+        <view class="timePicker">
+          <picker mode="date" value="{{start_date}}" start="2015-09-01" end="2017-09-01" bindchange="bindStartDateChange">
+            <view class="picker">
+               {{start_date}}
+            </view>
+          </picker>
+        </view>  <!--datePicker end-->
+        <view class="timePicker">
+          <picker mode="time" value="{{start_time}}" start="09:01" end="21:01" bindchange="bindStartTimeChange">
+            <view class="picker">
+               {{start_time}}
+            </view>
+          </picker>
+        </view>  <!--timePicker end-->
+  </view>  <!--Picker end-->
+</view>
+
+<view class="section applyForTime">
+  <view class="name">
+  实际用车结束时间
+  </view>
+  <view class="content Picker line">
+        <view class="timePicker">
+          <picker mode="date" value="{{end_date}}" end="2015-09-01" end="2017-09-01" bindchange="bindEndDateChange">
+            <view class="picker">
+               {{end_date}}
+            </view>
+          </picker>
+        </view>  <!--datePicker end-->
+        <view class="timePicker">
+          <picker mode="time" value="{{end_time}}" end="09:01" end="21:01" bindchange="bindEndTimeChange">
+            <view class="picker">
+               {{end_time}}
+            </view>
+          </picker>
+        </view>  <!--timePicker end-->
+  </view>  <!--Picker end-->
+</view>
+
+
+<view class="section" >
+  <view class="name">
+    实际里程
+  </view>
+  <view class="content line">
+    <input placeholder="实际里程" class="input" bindblur="actualMilesInput"/>
+    <view>公里</view>
+  </view>
+</view>
+
+<view wx:if="{{companyRole=='所内'}}">
+<view class="section" >
+  <view class="name">
+    过桥费
+  </view>
+  <view class="content line">
+    <input placeholder="过桥费" class="input" bindblur="gqFeeInput"/>
+    <view>元</view>
+  </view>
+</view>
+
+<view class="section" >
+  <view class="name">
+    停车费
+  </view>
+  <view class="content line">
+    <input placeholder="停车费" class="input" bindblur="pauseFeeInput"/>
+    <view>元</view>
+  </view>
+</view>
+
+<view class="section" >
+  <view class="name">
+   高速费
+  </view>
+  <view class="content line">
+    <input placeholder="高速费" class="input" bindblur="gsFeeInput"/>
+    <view>元</view>
+  </view>
+</view>
+
+<view class="section" >
+  <view class="name">
+   总费用
+  </view>
+  <view class="content line">
+    <view>{{account}}</view>
+    <view>元</view>
+  </view>
+</view>
+</view>
+<view wx:else>
+  <view class="section" >
+  <view class="name">
+   总费用
+  </view>
+  <view class="content line">
+    <input placeholder="总费用" class="input" bindblur="totalInput"/>
+    <view>元</view>
+  </view>
+</view>
+</view>
+
+
+
+
+
+<form bindsubmit="Settle" bindreset="formReset" report-submit>
+  <!-- 此处是表单元素 -->
+  <button formType="submit" type="primary">确认指派</button><!-- 提交按钮 -->
+</form>

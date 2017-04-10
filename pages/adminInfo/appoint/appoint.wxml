@@ -1,0 +1,54 @@
+
+
+<view class="sOrder" wx:for="{{orderToSend}}" wx:key="*this">
+                  <view class="info" data-item="{{item}}" bindtap="checkOrder">
+                      <view class="time">
+                        {{item.usetime}}
+                      </view>
+                      <view class="location">
+                          <view wx:for="{{item.origin}}" wx:key="*this" class="location" wx:for-item="itemOrigin">
+                              <view wx:if="{{index==0}}">从</view>
+                              <view>{{itemOrigin}}</view>
+                              <view wx:if="{{index<(item.origin.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                              <view wx:if="{{index==item.origin.length-1}}">出发,到</view>
+                          </view>
+                          <view wx:for="{{item.destination}}" wx:key="*this" class="location" wx:for-item="itemDest">
+                              <view>{{itemDest}}</view>
+                              <view wx:if="{{index<(item.destination.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                          </view>
+                      </view>  
+                      <view class="passenger">
+                        乘客：{{item.passenger}}
+                      </view>
+                      <view class="passengerTel">
+                        乘客电话：{{item.mobilephone}}
+                      </view>
+                      <view class="reason">
+                        乘车原因：{{item.reason}}
+                      </view>
+                  </view> <!-- info end -->
+          </view>   <!-- sOrder end -->
+
+
+<view class="section" >
+  <view class="name">
+    选择公司 
+  </view>
+  <view class="content">
+    <picker bindchange="bindPickerCompany" value="{{index_company}}" range="{{array_company}}">
+    <view>
+      {{array_company[index_company]}}
+    </view>
+  </picker>
+  </view>
+</view>
+
+
+<form bindsubmit="Appoint" bindreset="formReset" report-submit>
+  <!-- 此处是表单元素 -->
+  <button formType="submit" type="primary">发送指派</button><!-- 提交按钮 -->
+</form>

@@ -1,0 +1,163 @@
+<!--     //state: 10:待审批    20：待派车到司机接单  21：所内派车 22-28:所外派车 29：所外抢单 23：所外指派  
+    //        30：待确认(未确认车型和司机)  31:待确认（已确认车型和司机）   40：待评价待结算   41：已评价未结算 42:已结算未评价  50：已完成 0：已取消  51：审批被拒绝  -->
+<loading hidden="{{loadingHidden}}">
+        加载中...
+</loading>
+<view wx:if="{{loadingHidden}}">
+<view class="state">
+                      <view wx:if="{{item.state==10}}"> 待审批 </view>
+                      <view wx:elif="{{item.state>=20&&item.state<40}}"> 待派车 </view>
+                      <view wx:elif="{{item.state==40}}"> 待确认 </view>
+                      <view wx:elif="{{(item.state==41&&!role)}}"> 待结算 </view>
+                      <view wx:elif="{{(item.state==0)}}"> 已取消 </view>
+                      <view wx:elif="{{(item.state==51&&role)}}"> <view>审批未通过</view> <view>理由:{{item.disapp_remark}}</view></view>
+                      <view wx:else> 已完成 </view>
+</view>
+
+ <view class="time">
+        {{item.usetime}}
+</view>
+
+<view class="location">
+    <view wx:for="{{item.origin}}" wx:key="*this" class="location" wx:for-item="itemOrigin">
+        <view wx:if="{{index==0}}">从</view>
+        <view>{{itemOrigin}}</view>
+        <view wx:if="{{index<(item.origin.length-1)}}">
+        <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+        </view>
+        <view wx:if="{{index==item.origin.length-1}}">出发,到</view>
+    </view>
+    <view wx:for="{{item.destination}}" wx:key="*this" class="location" wx:for-item="itemDest">
+        <view>{{itemDest}}</view>
+        <view wx:if="{{index<(item.destination.length-1)}}">
+        <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+        </view>
+    </view>
+</view>  
+
+
+<view class="section" wx:if="{{item.driverName}}">
+  <view class="name">
+     司机
+  </view>
+  <view class="content">
+    {{item.driverName}}
+  </view>
+</view>
+<view class="section" wx:if="{{item.driverMobilephone}}">
+  <view class="name">
+     联系方式
+  </view>
+  <view class="content">
+    {{item.driverMobilephone}}
+  </view>
+</view>
+<view class="section" wx:if="{{item.carName}}">
+  <view class="name">
+     车型
+  </view>
+  <view class="content">
+    {{item.carName}}
+  </view>
+</view>
+<view class="section" wx:if="{{item.carLicense}}">
+  <view class="name">
+     车牌号
+  </view>
+  <view class="content">
+    {{item.carLicense}}
+  </view>
+</view>
+<view class="section">
+  <view class="name">
+     用车原因
+  </view>
+  <view class="content" >
+    {{item.reason}}
+  </view>
+</view>
+<view class="section">
+  <view class="name">
+     用车类型
+  </view>
+  <view class="content" wx:if="{{item.type==0}}">
+    管理
+  </view>
+  <view class="content" wx:if="{{item.type==1}}">
+    型号
+  </view>
+  <view class="content" wx:if="{{item.type==2}}">
+    横向
+  </view>
+</view>
+<view class="section" wx:if="{{item.manager}}">
+  <view class="name">
+     型号管理员
+  </view>
+  <view class="content">
+    {{item.manager}}
+  </view>
+</view>
+<view class="section">
+  <view class="name">
+     乘车人
+  </view>
+  <view class="content">
+    {{item.passenger}}
+  </view>
+</view>
+<view class="section">
+  <view class="name">
+     乘车人联系方式
+  </view>
+  <view class="content">
+    {{item.mobilephone}}
+  </view>
+</view>
+
+<view class="section">
+  <view class="name">
+     是否往返
+  </view>
+  <view class="content">
+    <view wx:if="{{item.isreturn}}">
+    是
+    </view>
+    <view wx:else> 否 </view>
+  </view>
+</view>
+<view class="section">
+  <view class="name">
+     是否节假日
+  </view>
+  <view class="content">
+    <view wx:if="{{item.isweekend}}">
+    是
+    </view>
+    <view wx:else> 否 </view>
+  </view>
+</view>
+<view class="section">
+  <view class="name">
+     用工需求
+  </view>
+  <view class="content" wx:if="{{item.workers!=''}}">
+  {{item.workers}}
+  </view>
+  <view class='content' wx:else>
+   无
+  </view>
+</view>
+<view class="section" >
+  <view class="name">
+     备注
+  </view>
+  <view class="content" wx:if="{{item.remark!=''}}">
+    {{item.remark}}
+  </view>
+  <view class='content' wx:else>
+   无
+  </view>
+</view>
+</view>
+

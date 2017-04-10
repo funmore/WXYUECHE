@@ -1,0 +1,64 @@
+<view class="stv-container">
+
+  <view class="tab-bar" >
+    <view wx:for="{{tabs}}" wx:key="*this" data-index=
+    "{{index}}" bindtap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px">
+      <text>{{item}}</text>
+      <view wx:if="{{stateLengthFlag}}">{{stateLength[index]}}</view>
+    </view>
+    <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
+  </view>
+  <view class="scroll-view">
+    <loading hidden="{{loadingHidden}}">
+    加载中...
+    </loading>
+    <view  class="scroll-view-wrapper {{!stv.tStart? 'withAnimate': ''}}" style="left: -{{stv.offset}}px">
+      <view style="width: {{stv.windowWidth}}px;" wx:for="{{tabs}}" wx:key="*this" class="one-scene" wx:for-index="tabIndex">
+         <scroll-view scroll-y="true" scroll-top="99rpx" class="scroll-view-true {{tabIndex? 'addHeight':''}}">
+         <view class="sOrder" wx:for="{{orderArray}}" wx:key="*this" wx:if="{{((tabIndex==0)&&(item.state==10))||((tabIndex==1)&&(item.state>=20)&&(item.state<40))||((tabIndex==2)&&(item.state==40))||(tabIndex==3&&(item.state==0||item.state>=41))}}" >
+                  <view class="state" >
+                      <view wx:if="{{item.state==0}}">
+                        <image style="width: 60px; height: 60px;" mode="aspectFit" src="/images/orderCancel.png"></image>
+                      </view>
+                      <view wx:if="{{item.state==51}}">
+                        <image style="width: 60px; height: 60px;" mode="aspectFit" src="/images/orderAppDis.png"></image>
+                      </view>
+                  </view>
+                  <view class="info" data-item="{{item}}" bindtap="checkOrder">
+                      <view class="time">
+                        {{item.usetime}}
+                      </view>
+                      <view class="location">
+                          <view wx:for="{{item.origin}}" wx:key="*this" class="location" wx:for-item="itemOrigin">
+                              <view wx:if="{{index==0}}">从</view>
+                              <view>{{itemOrigin}}</view>
+                              <view wx:if="{{index<(item.origin.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                              <view wx:if="{{index==item.origin.length-1}}">出发,到</view>
+                          </view>
+                          <view wx:for="{{item.destination}}" wx:key="*this" class="location" wx:for-item="itemDest">
+                              <view>{{itemDest}}</view>
+                              <view wx:if="{{index<(item.destination.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                          </view>
+                      </view>   
+                      <view class="passenger">
+                        乘客：{{item.passenger}}
+                      </view>
+                      <view class="passengerTel">
+                        乘客电话：{{item.mobilephone}}
+                      </view>
+                      <view class="reason">
+                        乘车原因：{{item.reason}}
+                      </view>
+                  </view> <!-- info end -->
+            <button data-item="{{item}}"  wx:if="{{tabIndex==2}}" type="primary" size="mini" class="goAdmin" bindtap="confirmOrder" >确认乘车</button>
+            <button data-item="{{item}}"  wx:if="{{tabIndex<3}}" type="warn" size="mini" class="goAdmin" bindtap="cancelOrder" >取消用车</button>
+          </view>   <!-- sOrder end -->
+          </scroll-view>
+    </view>  
+  </view>
+</view>
+</view>

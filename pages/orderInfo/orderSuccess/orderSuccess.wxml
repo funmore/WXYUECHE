@@ -1,0 +1,5 @@
+<view class="image" >
+  <view>用车申请成功</view>
+<!--   <image style="width: 200px; height: 200px; background-color: #eeeeee;" mode="scaleToFill" src="../../../images/成功.png"></image> -->
+  <button bindtap="backHome">回到主页</button>
+</view>

@@ -1,0 +1,40 @@
+.sOrder {
+  height: 340rpx;
+  width: 720rpx;
+  background-color: white;
+  border-radius: 5%; 
+  margin: 0 auto;
+  margin-top: 10rpx;
+  /*text-align: center;*/
+}
+.info{
+  float:right;
+  width: 90%;
+  height: 100%;
+  position: relative;
+}
+.time{
+margin-top:10rpx;
+}
+.location{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  margin-top:10rpx;
+}
+
+
+
+.section{
+	height: 30px;
+}
+.name{
+    float: left;
+}
+.content{
+    float:right;
+}
+
+.accept{
+  margin-top: 100rpx;
+}

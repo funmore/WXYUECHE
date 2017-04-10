@@ -1,0 +1,59 @@
+.sOrder {
+  height: 340rpx;
+  width: 720rpx;
+  background-color: white;
+  border-radius: 5%; 
+  margin: 0 auto;
+  margin-top: 10rpx;
+  /*text-align: center;*/
+}
+.info{
+  float:right;
+  width: 90%;
+  height: 100%;
+  position: relative;
+}
+
+.location{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  margin-top:10rpx;
+}
+
+.input{
+  text-align: right;
+  height: 70rpx;
+  width: 210rpx;
+  min-height: 0;
+  white-space:normal;
+  overflow: visible;
+  text-overflow:clip;
+
+}
+
+.section{
+	height: 70rpx;
+  margin-bottom: 2rpx;
+  font-size: medium;
+  line-height:70rpx
+}
+.name{
+    float: left;
+}
+
+.contentStar{
+    float:right;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    
+}
+.content{
+    float:right;
+    margin-right: 20rpx;
+}
+
+.accept{
+  margin-top: 100rpx;
+}

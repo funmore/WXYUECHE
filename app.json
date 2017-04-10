@@ -1,0 +1,59 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/order/order",
+    "pages/invate/invate",
+    "pages/add/add",
+    "pages/approval/approval",
+    "pages/admin/admin",
+    "pages/company/company",
+    "pages/orderInfo/origin/origin",
+    "pages/orderInfo/destination/destination",
+    "pages/orderInfo/orderFail/orderFail",
+    "pages/orderInfo/orderSuccess/orderSuccess",
+    "pages/orderInfo/reviewOrder/reviewOrder",
+    "pages/indexInfo/checkOrder/checkOrder",
+    "pages/adminInfo/appoint/appoint",
+    "pages/companyInfo/accept/accept",
+    "pages/companyInfo/settle/settle",
+    "pages/approvalInfo/disapprovalproc/disapprovalproc"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {  
+   "color": "#a9b7b7",  
+   "selectedColor": "#11cd6e",  
+   "borderStyle":"white",  
+   "list": [{  
+     "selectedIconPath": "images/首页.png",  
+     "iconPath": "images/首页.png",  
+     "pagePath": "pages/order/order",  
+     "text": "首页"  
+   }, {  
+     "selectedIconPath": "images/添加.png",  
+     "iconPath": "images/添加.png",  
+     "pagePath": "pages/add/add",  
+     "text": "申请"
+   }, {  
+     "selectedIconPath": "images/审批.png",  
+     "iconPath": "images/审批.png",  
+     "pagePath": "pages/approval/approval",  
+     "text": "审批"  
+   },{  
+     "selectedIconPath": "images/派车调度.png",  
+     "iconPath": "images/派车调度.png",  
+     "pagePath": "pages/admin/admin",  
+     "text": "调度"  
+   },
+   {
+     "selectedIconPath": "images/司机.png",  
+     "iconPath": "images/司机.png",  
+     "pagePath": "pages/company/company",  
+     "text": "司机"  
+   }]  
+ }
+}

@@ -1,0 +1,60 @@
+.line{
+    display:flex;
+}
+.line >view{
+	margin-left: 20rpx;
+}
+.name{
+    float: left;
+}
+.content{
+    float:right;
+    margin-right: 20rpx;
+}
+.timePicker{
+    margin-left: 20rpx;
+}
+.section{
+	height: 70rpx;
+	margin-bottom: 2rpx;
+}
+
+.input{
+	text-align: right;
+	height: 70rpx;
+	width: 220rpx;
+	min-height: 0;
+	white-space:normal;
+	overflow: visible;
+	text-overflow:clip;
+
+}
+.navigator{
+	width: 600rpx;
+	height: 70rpx;
+	display:table;
+}
+.section{
+	font-size: medium;
+	line-height:70rpx
+}
+image{
+	float: right;
+	width: 42rpx; 
+	height: 42rpx; 
+	vertical-align: middle;
+}
+span{
+	height: 100%;
+	display:table-cell;
+	vertical-align: middle;
+
+}
+.journey{
+	  float:right;
+	  height: 70rpx;
+	  vertical-align: middle;
+	  display: flex;
+      flex-direction:row;
+      overflow: hidden;
+}

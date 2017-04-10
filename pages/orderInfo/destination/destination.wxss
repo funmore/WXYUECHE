@@ -1,0 +1,24 @@
+.name{
+    float: left;
+}
+.content{
+    float:right;
+    margin-right: 20rpx;
+}
+
+.section{
+	height: 70rpx;
+	margin-bottom: 2rpx;
+	font-size: medium;
+	line-height:70rpx
+}
+
+.input{
+	text-align: right;
+	height: 70rpx;
+	width: 210rpx;
+	min-height: 0;
+	white-space:normal;
+	overflow: visible;
+	text-overflow:clip;
+}

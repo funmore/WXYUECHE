@@ -1,0 +1,7 @@
+
+.image >image{
+	margin: 10rpx;
+}
+.image{
+   	text-align:center;
+}

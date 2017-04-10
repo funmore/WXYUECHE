@@ -1,0 +1,103 @@
+<loading hidden="{{loadingHidden}}">
+        加载中...
+</loading>
+<view class="sOrder" wx:for="{{orderToSend}}" wx:key="*this">
+                  <view class="info" data-item="{{item}}" bindtap="checkOrder">
+                      <view class="time">
+                        {{item.usetime}}
+                      </view>
+                      <view class="location">
+                          <view wx:for="{{item.origin}}" wx:key="*this" class="location" wx:for-item="itemOrigin">
+                              <view wx:if="{{index==0}}">从</view>
+                              <view>{{itemOrigin}}</view>
+                              <view wx:if="{{index<(item.origin.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                              <view wx:if="{{index==item.origin.length-1}}">出发,到</view>
+                          </view>
+                          <view wx:for="{{item.destination}}" wx:key="*this" class="location" wx:for-item="itemDest">
+                              <view>{{itemDest}}</view>
+                              <view wx:if="{{index<(item.destination.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                          </view>
+                      </view>  
+                      <view class="passenger">
+                        乘客：{{item.passenger}}
+                      </view>
+                      <view class="passengerTel">
+                        乘客电话：{{item.mobilephone}}
+                      </view>
+                      <view class="reason">
+                        乘车原因：{{item.reason}}
+                      </view>
+                  </view> <!-- info end -->
+          </view>   <!-- sOrder end -->
+
+
+<view class="section" >
+  <view class="name">
+    选择车辆 
+  </view>
+  <view class="content">
+    <picker bindchange="bindPickerCar" value="{{index_car}}" range="{{array_car}}">
+    <view>
+      {{array_car[index_car]}}
+    </view>
+  </picker>
+  </view>
+</view>
+
+<view class="section" wx:if="{{array_car[index_car]=='新建车辆信息'}}" style="border:{{carNameStyle}}">
+  <view class="name">
+    车辆类型 
+  </view>
+  <view class="content">
+    <input placeholder="品牌，车型" class="input" bindblur="bindCarNameInput"/>
+  </view>
+</view>
+<view class="section" wx:if="{{array_car[index_car]=='新建车辆信息'}}" style="border:{{carLicenseStyle}}">
+  <view class="name">
+    车辆牌照 
+  </view>
+  <view class="content">
+    <input placeholder="车辆牌照" class="input" bindblur="bindCarLicenseInput"/>
+  </view>
+</view>
+
+<view class="section" >
+  <view class="name">
+    选择司机 
+  </view>
+  <view class="content">
+    <picker bindchange="bindPickerDriver" value="{{index_driver}}" range="{{array_driver}}">
+    <view>
+      {{array_driver[index_driver]}}
+    </view>
+  </picker>
+  </view>
+</view>
+
+<view class="section" wx:if="{{array_driver[index_driver]=='新建司机信息'}}" style="border:{{driverNameStyle}}">
+  <view class="name">
+    司机姓名 
+  </view>
+  <view class="content">
+    <input placeholder="司机姓名" class="input" bindblur="bindDriverNameInput"/>
+  </view>
+</view>
+<view class="section" wx:if="{{array_driver[index_driver]=='新建司机信息'}}" style="border:{{driverMobilephoneStyle}}">
+  <view class="name">
+    司机联系方式 
+  </view>
+  <view class="content">
+    <input placeholder="司机联系方式" class="input" bindblur="bindDriverMobilephoneInput"/>
+  </view>
+</view>
+
+
+
+<form bindsubmit="Accept" bindreset="formReset" class="accept" report-submit>
+  <!-- 此处是表单元素 -->
+  <button formType="submit" type="primary">确认指派</button><!-- 提交按钮 -->
+</form>

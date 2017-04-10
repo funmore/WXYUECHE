@@ -1,0 +1,24 @@
+.state{
+  text-align: center;
+  font-size: xx-large;
+}
+.time{
+margin-top:10rpx;
+}
+.location{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  margin-top:10rpx;
+  text-align: center;
+}
+.name{
+    float: left;
+}
+.content{
+    float:right;
+    margin-right: 10px;
+}
+.section{
+  height: 30px;
+}

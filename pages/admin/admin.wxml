@@ -1,0 +1,78 @@
+
+<view class="stv-container">
+  <view class="tab-bar">
+    <view wx:for="{{tabs}}" wx:key="unique" data-index=
+    "{{index}}" bindtap="handlerTabTap" class="tab {{activeTab==index?'tab-active':''}}" style="width: {{stv.windowWidth/tabs.length}}px">
+      <text>{{item}}</text>
+      <view wx:if="{{stateLengthFlag}}">{{stateLength[index]}}</view>
+    </view>
+    <view style="width: {{stv.lineWidth}}px; left: {{stv.offset/tabs.length}}px" class="under-line {{!stv.tStart? 'withAnimate': ''}}"></view>
+  </view>
+  <view class="scroll-view">
+    <loading hidden="{{loadingHidden}}">
+        加载中...
+        </loading>
+    <view  class="scroll-view-wrapper {{!stv.tStart? 'withAnimate': ''}}" style="left: -{{stv.offset}}px">
+      <view style="width: {{stv.windowWidth}}px;" wx:for="{{tabs}}" wx:key="*this" class="one-scene" wx:for-index="tabIndex">
+        <!--     //state: 10:待审批    20：待派车到司机接单  21：所内派车 22-28:所外派车 29：所外抢单 23：所外指派  
+    //        30：待确认(未确认车型和司机)  31:待确认（已确认车型和司机）   40：待评价待结算   41：已评价未结算 42:已结算未评价  50：已完成 0：已取消  51：审批被拒绝  -->
+         <scroll-view scroll-y="true" scroll-top="99rpx" class="scroll-view-true {{tabIndex==2? 'addHeight':''}}">
+         <view class="sOrder" wx:for="{{orderArray}}" wx:key="*this" wx:if="{{((tabIndex==0)&&(item.state==20))||((tabIndex==1)&&(item.state>20)&&(item.state<39))||((tabIndex==2)&&(item.state>=39||item.state==0))}}"  data-item="{{item}}" >
+                  <view class="state" wx:if="{{tabIndex==0||tabIndex==1}}">
+                      <icon wx:if="{{item.selected}}" type="success_circle" size="20" bindtap="bindCheckbox" data-index="{{index}}" class="my-check"/>
+                      <icon wx:else type="circle" size="20" bindtap="bindCheckbox" data-index="{{index}}" class="my-check"/>
+                  </view>
+                  <view class="info" data-item="{{item}}"  bindtap="checkOrder">
+                      <view class="time">
+                        {{item.usetime}}
+                      </view>
+                      <view class="location">
+                          <view wx:for="{{item.origin}}" wx:key="*this" class="location" wx:for-item="itemOrigin">
+                              <view wx:if="{{index==0}}">从</view>
+                              <view>{{itemOrigin}}</view>
+                              <view wx:if="{{index<(item.origin.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                              <view wx:if="{{index==item.origin.length-1}}">出发,到</view>
+                          </view>
+                          <view wx:for="{{item.destination}}" wx:key="*this" class="location" wx:for-item="itemDest">
+                              <view>{{itemDest}}</view>
+                              <view wx:if="{{index<(item.destination.length-1)}}">
+                              <image style="width: 20px; height: 20px; " mode="aspectFit" src="/images/arrowRight.png"></image>
+                              </view>
+                          </view>
+                      </view>  
+                      <view class="passenger">
+                        乘客：{{item.passenger}}
+                      </view>
+                      <view class="passengerTel">
+                        乘客电话：{{item.mobilephone}}
+                      </view>
+                      <view class="reason">
+                        乘车原因：{{item.reason}}
+                      </view>
+                  </view> <!-- info end -->
+          </view>   <!-- sOrder end -->
+          </scroll-view>
+          <view class="sendToAdmin" wx:if="{{(tabIndex==0&&stateLength[0]>0)}}">
+            <view bindtap="bindSelectAll" class="bindSelectAll" >
+                  <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="20" class="l-mycheck"/>
+                  <icon wx:else type="circle" size="20" class="l-mycheck"/>
+                  <view class="sendToAdminText">全选</view>
+            </view>
+            <button type="primary" size="mini"  class="goAdmin" bindtap="goAppoint" >发送指派</button>
+            <button type="primary" size="mini"  class="goAdmin" bindtap="goCompete" >发送抢单</button>
+            <button data-tab-index="{{tabIndex}}"  type="warn" size="mini" class="goAdmin" bindtap="cancelOrder" >取消用车</button>
+          </view>
+          <view class="sendToAdmin" wx:if="{{(tabIndex==1&&stateLength[1]>0)}}">
+            <view bindtap="bindSelectAllRetreat" class="bindSelectAll" >
+                  <icon wx:if="{{selectedAllStatusRetreat}}" type="success_circle" size="20" class="l-mycheck"/>
+                  <icon wx:else type="circle" size="20" class="l-mycheck"/>
+                  <view class="sendToAdminText">全选</view>
+            </view>
+            <button type="primary" size="mini"  class="goAdmin" bindtap="goRetreat" >撤回调度</button>
+          </view>
+    </view>  
+  </view>
+</view>
+</view>

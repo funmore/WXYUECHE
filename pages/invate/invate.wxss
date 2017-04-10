@@ -1,0 +1,5 @@
+/* pages/invate/index.wxss */
+
+.btn-area{
+	margin-top: 100rpx;
+}

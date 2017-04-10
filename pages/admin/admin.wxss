@@ -1,0 +1,108 @@
+.stv-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.stv-container .tab-bar {
+  position: relative;
+  display: flex;
+  font-size: 30rpx;
+  color: #666666;
+}
+.stv-container .tab-bar .tab-active {
+  color: black;
+}
+.stv-container .tab-bar .tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 16rpx;
+  padding-bottom: 20rpx;
+}
+.stv-container .tab-bar .under-line {
+  position: absolute;
+  bottom: 0;
+  height: 6rpx;
+  background-color: #11cd6e;
+}
+.stv-container .scroll-view {
+  top:0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #e7eaef;
+}
+.stv-container .scroll-view .scroll-view-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+}
+
+.one-scene{
+  position: relative
+}
+
+.scroll-view-true{
+  height:86%;
+}
+.sOrder {
+  height: 340rpx;
+  width: 720rpx;
+  background-color: white;
+  border-radius: 5%; 
+  margin: 0 auto;
+  margin-top: 10rpx;
+  /*text-align: center;*/
+}
+.state{
+  float:left;
+  width: 10%;
+  height: 100%;
+  text-align: center;
+  line-height: 340rpx;
+  font-size: xx-large;
+}
+.info{
+  float:right;
+  width: 90%;
+  height: 100%;
+  position: relative;
+}
+.time{
+margin-top:10rpx;
+}
+.location{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  margin-top:10rpx;
+}
+
+.sendToAdmin{
+  height: 14%;
+  width: 750rpx;  
+  }
+.addHeight{
+  height: 100%;
+}
+.bindSelectAll{
+  float:left;
+  display: flex;
+  flex-direction:row;
+  height: 100rpx;
+  margin: 10rpx;
+}
+.bindSelectAll >view{
+  margin-left: 10rpx;
+}
+.bindSelectAll >view{
+  margin-left: 10rpx;
+}
+.goAdmin{
+  float:right;
+  margin: 7rpx 10rpx 5rpx 10rpx;
+}

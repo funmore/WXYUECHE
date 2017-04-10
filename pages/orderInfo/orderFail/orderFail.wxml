@@ -1,0 +1,5 @@
+<view class="image" >
+  <view>用车申请失败</view>
+  <button bindtap="backHome">回到主页</button>
+  <button binttap="reOrder">重新申请</button>
+</view>

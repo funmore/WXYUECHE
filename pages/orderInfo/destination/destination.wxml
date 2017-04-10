@@ -1,0 +1,34 @@
+
+<view wx:for="{{destArray}}" wx:key="unique" >
+<view class="section departure" >
+  <view class="name">
+    目的地{{item.id+1}} 
+  </view>
+  <view class="content">
+    <picker bindchange="bindPickerDestination" data-item-id="{{item.id}}" value="{{index_destination[item.id]}}" range="{{array_destination}}">
+    <view>
+      {{array_destination[index_destination[item.id]]}}
+    </view>
+  </picker>
+  </view>
+</view>
+<!-- 具体出发地 -->
+<view class="section origin" wx:if="{{index_destination[item.id]==(array_destination.length-1)}}" style="border:{{styleArray[item.id]}}">
+  <view class="name">
+    请输入详细目的地
+  </view>
+  <view class="content">
+    <input placeholder="出发地" class="input" bindblur="destInput" data-item-id="{{item.id}}" auto-focus/>
+  </view>
+</view>
+</view>
+<!-- 具体出发地 -->
+<view class="button">
+    <button bindtap="addOrigin">增加目的地</button>
+</view>
+<view class="button">
+    <button bindtap="decOrigin">减少目的地</button>
+</view>
+<view class="button">
+    <button bindtap="saveAndBack">保存并返回</button>
+</view>
